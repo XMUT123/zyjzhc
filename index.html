@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding: 0;list-style: none;text-decoration: none;}
+    #nav{width: 500px;height: 40px;background: #ccc;margin: 0 auto;}
+    ul{background: #FFFFFF}
+    ul li{float:left;  height: 40px; line-height: 40px; padding: 0 20px; position: relative;}
+    ul li:hover{background: darkgoldenrod;}
+    /*ul li ul li{float: none;}*/
+    /*关键一：将二级菜单设置为display：none;*/
+    ul li ul{position: absolute;top:40px;left: 0; display: none;}
+    ul li ul li ul {position: ;top:60px;left: 40px; display: none;}
+    ul li ul li:hover{background: gainsboro;}
+    ul li ul li ul li:hover{background: gainsboro;}
+    /*关键二：在划过二级菜单从属的一级菜单时，设置为display:block;*/
+    ul li:hover ul{display: block;}
+    ul li ul li:hover ul {display: block;}
+    </style>
+</head>
+<body>
+    <div >
+        <ul>
+            <li><a href="">首页</a></li>
+            <li><a href="">汽车</a>
+                <ul>
+                    <li><a href="#">奥迪</a> </li>
+                    <li><a href="#">道奇</a> </li>
+                </ul>
+            </li>
+            <li><a href="">手机</a>
+                <ul>
+                    <li><a href="#">小米</a>
+                    	<ul>
+                    		<li><a href="#">测试</a> </li>
+                    	</ul>
+                    </li>
+                    <li><a href="#">华为</a> </li>
+                </ul>
+            </li>
+        </ul>
+    </div>   
+</body>
+</html>
