@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META content="deel" name=Author>
+<title>动态提示的下拉框</title>
+<style>
+ 
+</style>
+
+</head>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#test").val("");
+  });
+});
+</script>
+<body >
+<center>
+<h2>动态提示的下拉框</h2>
+<hr>
+    <input id="test" list="aaa" style="width:100px" size=10  autocomplete="off">
+  <datalist id="aaa" style="width:100px" size=10 >
+    <option value="1">测试1</option>
+    <option value="12">测试2</option>
+    <option value="123">测试3</option>
+    <option value="1234"></option>
+    <option value="2"></option>
+    <option value="23"></option>
+    <option value="234"></option>
+    <option value="2345"></option>
+  </datalist>
+  <button>点击清空</button>
+<hr>
+</body>

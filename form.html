@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <link rel="stylesheet" type="text/css" href="js/sweetalert.css" />
+    <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <body>
+        <button><a  onclick="openwin()">注 册</a></button>
+   
+<script type="text/javascript">
+function register(){
+    var ab = document.getElementById('abc').value;
+    // var ab = $('#abc').val();
+    if(ab ==''){
+        swal("失败", "请填写账户", "error");
+        swal("失败", "请填写账户", "success");
+        return;
+    }
+    $("#regForm").submit();
+}
+function openwin() {
+　　window.open ("loading.html", "newwindow", "height=400, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");
+//写成一行
+}
+</script>
+    </body>
+</html>

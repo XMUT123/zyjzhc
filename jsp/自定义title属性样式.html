@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+	//显示悬浮层 
+	function showInform() {
+		document.getElementById("inform").style.display = 'block';
+		// document.getElementById("inform").css("display","block"); 
+	}
+	//隐藏悬浮层 
+	function hiddenInform(event) {
+		var informDiv = document.getElementById('inform');
+		var x = event.clientX;
+		var y = event.clientY;
+		var divx1 = informDiv.offsetLeft;
+		var divy1 = informDiv.offsetTop;
+		var divx2 = informDiv.offsetLeft + informDiv.offsetWidth;
+		var divy2 = informDiv.offsetTop + informDiv.offsetHeight;
+		if(x < divx1 || x > divx2 || y < divy1 || y > divy2) {
+			document.getElementById('inform').style.display = 'none';
+		}
+
+	}
+</script>
+	<body>
+		<div data-title='分配日期:空||分配时间:22-2 -2||数据更新日期:空'  class="tip" style="width: 100px;cursor:pointer">我是一个测试</div> 
+		<div onMouseOver="javascript:showInform();" onMouseOut="hiddenInform(event)" title="标222222222&#10;题33333333333" class="tip"  style="width: 100px;cursor:pointer">我是一个测试</div>
+		<div id="inform" onMouseOver="javascript:showInform();" onMouseOut="hiddenInform(event)">
+		
+		<table id="informTable"><tr><td>分配日期:空</td></tr><tr><td>分配日期:22-2月 -22</td></tr><tr><td>分配日期:空</td></tr><tr><td>分配日期:测试</td></tr><tr><td>分配日期:空</td></tr><tr><td>分配日期:18750777777</td></tr><tr><td>分配日期:空</td></tr><tr><td>分配时间:空</td></tr><tr><td>分配时间:22-2月 -22</td></tr><tr><td>分配时间:空</td></tr><tr><td>分配时间:测试</td></tr><tr><td>分配时间:空</td></tr><tr><td>分配时间:18750777777</td></tr><tr><td>分配时间:空</td></tr><tr><td>数据更新日期:空</td></tr><tr><td>数据更新日期:22-2月 -22</td></tr><tr><td>数据更新日期:空</td></tr><tr><td>数据更新日期:测试</td></tr><tr><td>数据更新日期:空</td></tr><tr><td>数据更新日期:18750777777</td></tr><tr><td>数据更新日期:空</td></tr><tr><td>客户姓名:空</td></tr><tr><td>客户姓名:22-2月 -22</td></tr><tr><td>客户姓名:空</td></tr><tr><td>客户姓名:测试</td></tr><tr><td>客户姓名:空</td></tr><tr><td>客户姓名:18750777777</td></tr><tr><td>客户姓名:空</td></tr><tr><td>原电话号码:空</td></tr><tr><td>原电话号码:22-2月 -22</td></tr><tr><td>原电话号码:空</td></tr><tr><td>原电话号码:测试</td></tr><tr><td>原电话号码:空</td></tr><tr><td>原电话号码:18750777777</td></tr><tr><td>原电话号码:空</td></tr><tr><td>原手机号码:空</td></tr><tr><td>原手机号码:22-2月 -22</td></tr><tr><td>原手机号码:空</td></tr><tr><td>原手机号码:测试</td></tr><tr><td>原手机号码:空</td></tr><tr><td>原手机号码:18750777777</td></tr><tr><td>原手机号码:空</td></tr><tr><td>开户日期:空</td></tr><tr><td>开户日期:22-2月 -22</td></tr><tr><td>开户日期:空</td></tr><tr><td>开户日期:测试</td></tr><tr><td>开户日期:空</td></tr><tr><td>开户日期:18750777777</td></tr><tr><td>开户日期:空</td></tr></table>
+	</div>
+		<style>
+			.tip {
+				position: relative;
+				color: red;
+			}
+			.tip:hover::after {
+				z-index: 20000;
+				position: absolute;
+				display: inline-flex;
+				flex-wrap: nowrap;
+				white-space: pre;
+				/*max-width: 200px;*/
+				overflow: auto;
+				top: 0px;
+				left: 100%;
+				color: #000000;
+				/*border-color: #00A2D4;*/
+				content: attr(data-title);
+				//在这里设内置好title出现的位容置就好了
+				/*border: 3px solid #FFFFF;*/
+				border-width: 1px;
+    			border-style: solid;
+    			border-color: #15a8e1 #15a8e1 #15a8e1 transparent;
+				
+				border-radius:0px 20px 20px 20px;
+				background-color: #FFFFFF;
+				padding: 5px;
+				box-shadow: #00000;
+				box-shadow: 0px 0px 10px darkgray;
+				}
+				body {
+		position: relative;
+		width: 50px;
+	}
+	
+	#inform {
+		position: absolute;
+		top: 20px;
+		width: 350px;
+		max-height: 150px;
+		left: 100%;
+		/* 设置最大高度，当高度达到此值时出现滚动条 */
+		z-index: 10;
+		background-color: #E0E5E5;
+		overflow: auto;
+		/* 自动添加滚动条 */
+		box-shadow: 0px 0px 10px darkgrey;
+		/* 外阴影 */
+		display: none;
+		/* 默认隐藏 */
+	}
+	
+	#informTable {
+		table-layout: fixed;
+		/* 用于实现表格td自动换行的部分代码*/
+		width: 325px;
+	}
+	
+	#informTable tr td {
+		width: 325px;
+		height: 30px;
+		font-size: 16px;
+		font-family: Georgia;
+		color: #FFFFFF;
+		word-wrap: break-word;
+		/*自动换行*/
+		padding: 0 0 0 0;
+	}
+	
+	#informTable tr td:hover {
+		background-color: #00A0E9;
+	}
+	
+	#inform hr {
+		border: 1;
+		width: 325px;
+		margin-bottom: 0px;
+	}
+		</style>
+	</body>
+	
+</html>

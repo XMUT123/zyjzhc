@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+ 
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 100%;
+				position: absolute;
+				z-index: 100;
+				top: 0;
+				left: 0;
+				height: 800px;
+			}
+			
+			#tooltips {
+				width: 244px;
+				border-radius: 4px;
+				position: relative;
+				padding: 10px 15px 10px 10px;
+				background-color: #effdfe;
+				border: 1px solid #2eb9bf;
+			}
+			
+			#tooltips span:nth-of-type(1) {
+				display: block;
+				width: 14px;
+				height: 14px;
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				background: url(img/close.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#tooltips span:nth-of-type(1):hover {
+				background: url(img/close-hover.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#tooltips span:nth-of-type(2) {
+				display: block;
+				width: 24px;
+				height: 14px;
+				position: absolute;
+				left: 30px;
+				bottom: -11px;
+				background: url(img/jian.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#tooltips .word {
+				width: 100%;
+				height: 20px;
+				overflow: auto;
+				font-size: 12px;
+				line-height: 19px;
+				word-break: break-all;
+				overflow-x: hidden;
+			}
+			
+			table {
+				margin: 100px;
+				border: 1px solid black;
+				position: absolute;
+			}
+			
+			table td {
+				width: 50px;
+				text-align: center;
+				line-height: 25px;
+			}
+		</style>
+	</head>
+ 
+	<body>
+		<table id="table">
+			<tr>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+			</tr>
+			<tr>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+			</tr>
+			<tr>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+			</tr>
+			<tr>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+			</tr>
+			<tr>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+				<td>点我</td>
+			</tr>
+ 
+		</table>
+ 
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//添加气泡提示框
+		$("#table").delegate("td", "click", function() {
+			tooltip($(this).html(), $(this));
+			//实现点击气泡弹出框之外的部分，气泡消失
+			$(document).click(function(e) {
+				var target = $(e.target);
+				if(!target.is($("td.tip")) && !target.is($('#tooltips')) && !target.parents().is(".tooltips")) {
+					$('#tooltips').remove();
+				} else {
+					$('#tooltips').show();
+				}
+			})
+		});
+ 
+		/**
+		 * @func
+		 * @desc 为td添加气泡提示框
+		 * @param 
+		 */
+		function tooltip(msg, obj) {
+			if($("#tooltips").length == 0) {
+				$("body").append(
+					"<div id='tooltips' class='tooltips'>" +
+					"<span id='cha'></span>" +
+					"<div class='word'>" + msg + "</div>" +
+					"<span id='jian'></span>" +
+					"</div>");
+				$("#cha").click(function() {
+					$("#tooltips").remove();
+				})
+			} else {
+				$("#tooltips .word").text(msg);
+			}
+ 
+			//调整位置
+			var objOffset = obj.offset();
+			var height = obj.height();
+			if(height > 50) {
+				height = (height / 2 - 32)
+			} else {
+				height = 0;
+			}
+			/*判断文字的长度*/
+			if(get_len(msg) <= 42) {
+				$("#tooltips").css({
+					left: objOffset.left,
+					top: objOffset.top - 48 + height
+				});
+			} else if(get_len(msg) <= 300) {
+				$("#tooltips").css("width", "290px");
+				$(".word").css("height", "75px");
+				$("#tooltips").css({
+					left: objOffset.left,
+					top: objOffset.top - 100 + height
+				});
+			} else if(get_len(msg) > 300) {
+				$("#tooltips").css("width", "343px");
+				$(".word").css("height", "103px");
+				$("#tooltips").css({
+					left: objOffset.left,
+					top: objOffset.top - 103 + height
+				});
+			}
+ 
+		}
+		/*判断字符的长度*/
+		function get_len(str) {
+			if(str == null) return 0;
+			if(typeof str != "string") {
+				str += "";
+			}
+			return str.replace(/[^\x00-\xff]/g, "01").length;
+		}
+	</script>
+ 
+</html>

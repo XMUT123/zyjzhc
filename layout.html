@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="layout">
+		    <header id="header">这里是头部</header>
+		    <main id="main">这里是内容</main>
+		    <footer id="footer">这里是尾部</footer>
+		</div>
+	</body>
+	<style>
+		body, html {
+    margin: 0;
+    padding: 0;
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#header {
+    height: 400px;
+    box-shadow: 2px 5px 5px 0px rgba(102,102,102,0.5);
+    background: aqua;
+    flex-shrink: 0;
+}
+
+#footer {
+    height: 100px;
+    background: coral;
+    flex-shrink: 0;
+}
+
+#main {
+    flex-grow: 2;
+    background: cornflowerblue;
+    overflow-y: auto;
+}
+
+	</style>
+</html>

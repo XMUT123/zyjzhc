@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+
+<body>
+  <div class="CL">
+    <div class="CLL">
+      <div class="resizable"></div>
+      <div class="resize-line"></div>
+      <!--<p class="CLL-content">
+        改变左边的宽度
+      </p>-->
+    </div>
+    <div class="CLR"></div>
+  </div>
+  <!--------------
+  <div class="CR">
+    <div class="CRL"></div>
+    <div class="CRR">
+      <div class="resizable"></div>
+      <div class="resize-line"></div>
+      <p class="CRR-content">
+        改变右边的宽度
+      </p>
+    </div>
+  </div>-->
+</body>
+<style>
+	.CR {
+  height: 200px;
+  width: 600px;
+  border: 1px solid;
+  display: flex;
+}
+.CRL {
+  height: 200px;
+  width: 200px;
+  flex: 1
+}
+.CRR {
+  position: relative;
+  transform: rotateY(180deg);
+}
+.CRR-content {
+  transform: rotateY(180deg);
+  margin: 0;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  bottom: 0;
+  left: 0;
+}
+.CL {
+  height: 200px;
+  width: 600px;
+  border: 1px solid;
+  display: flex;
+}
+.CLR {
+  height: 200px;
+  width: 200px;
+  flex: 1
+}
+.CLL {
+  position: relative;
+}
+.CLL-content {
+  margin: 0;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  bottom: 0;
+  left: 0;
+}
+.resizable {
+  resize: horizontal;
+  cursor: ew-resize;
+  width: 200px;
+  height: 200px;
+  overflow: scroll;
+  border: 1px solid black;
+  opacity: 0;
+}
+.resizable::-webkit-scrollbar {
+  width: 200px;
+  height: inherit;
+}
+/* 拖拽线 */
+.resize-line {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-right: 2px solid #eee;
+  border-left: 1px solid #bbb;
+  pointer-events: none;
+}
+.resizable:hover ~ .resize-line,
+.resizable:active ~ .resize-line {
+  border-left: 1px dashed skyblue;
+}
+.resizable123 {
+  width: 200px;
+  height: 200px;
+  overflow: scroll;
+  border: 1px solid black;
+  resize: horizontal;
+  cursor: ew-resize;
+}
+.resizable123::-webkit-scrollbar {
+  width: 200px;
+  height: 200px;
+  
+}
+</style>
+</html>
